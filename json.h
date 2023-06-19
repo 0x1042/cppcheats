@@ -8,6 +8,7 @@
 #include <unordered_map>
 namespace infra {
 
-bool parse_json_to_map(const std::string & src, std::unordered_map<std::string, std::string> & dst);
+bool json_to_map(const std::string & src, std::unordered_map<std::string, std::string> & dst);
 
-}
+bool generate_json(std::string & dst);
+} // namespace infra

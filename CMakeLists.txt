@@ -17,13 +17,15 @@ find_package(GTest CONFIG REQUIRED)
 find_package(cpr CONFIG REQUIRED)
 find_package(RapidJSON CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
+find_package(Protobuf CONFIG REQUIRED)
+find_package(tbb CONFIG REQUIRED)
 
 add_executable(${PROJECT_NAME}
                main.cpp
-               resource_manager.cpp
-               resource_manager.h
-               convert.cpp
-               convert.h json.cpp json.h)
+               resource_manager.cpp resource_manager.h
+               convert.cpp convert.h
+               json.cpp json.h
+               parallel.cpp parallel.h tbb_usages.cc tbb_usages.h)
 
 target_link_libraries(${PROJECT_NAME}
                       gflags::gflags
@@ -33,4 +35,7 @@ target_link_libraries(${PROJECT_NAME}
                       GTest::gtest_main
                       cpr::cpr
                       rapidjson
-                      Folly::folly_deps)
+                      TBB::tbb
+                      Folly::folly_deps
+                      /usr/local/lib/libomp.a
+                      )

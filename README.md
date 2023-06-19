@@ -27,6 +27,32 @@
   - [类型转换](#类型转换)
 - [rapidjson](#rapidjson)
   - [parse json](#parse-json)
+  - [generate json](#generate-json)
+- [openmp](#openmp)
+- [protobuf](#protobuf)
+  - [数据类型](#数据类型)
+  - [序列化/反序列化](#序列化反序列化)
+  - [编码规则](#编码规则)
+  - [arean](#arean)
+  - [json convert](#json-convert)
+  - [反射](#反射)
+- [thrift](#thrift)
+  - [数据类型](#数据类型-1)
+  - [序列化/反序列化](#序列化反序列化-1)
+  - [编码规则](#编码规则-1)
+- [zstd](#zstd)
+  - [压缩](#压缩)
+  - [解压](#解压)
+- [snappy](#snappy)
+  - [压缩](#压缩-1)
+  - [解压](#解压-1)
+- [zlib](#zlib)
+  - [压缩](#压缩-2)
+  - [解压](#解压-2)
+- [tbb](#tbb)
+  - [线程安全的容器](#线程安全的容器)
+  - [并行算法](#并行算法)
+  - [并行循环](#并行循环)
 
 # folly 
 
@@ -142,3 +168,107 @@ bool parse_json_to_map(const std::string & src, std::unordered_map<std::string, 
     return !dst.empty();
 }
 ```
+
+## generate json
+
+```c++
+bool generate_json(std::string & dst) {
+    rapidjson::Document doc;
+    doc.SetObject();
+
+    rapidjson::Document::AllocatorType & allocator = doc.GetAllocator();
+
+    rapidjson::Value array(rapidjson::kArrayType);
+
+    rapidjson::Value hello_value(rapidjson::kStringType);
+    hello_value.SetString("hello");
+
+    rapidjson::Value world_value(rapidjson::kStringType);
+    world_value.SetString("world");
+
+    array.PushBack(hello_value, allocator);
+    array.PushBack(world_value, allocator);
+    doc.AddMember("array", array, allocator);
+
+    rapidjson::Value person(rapidjson::kObjectType);
+    person.AddMember("age", 20, allocator);
+
+    rapidjson::Value email_value(rapidjson::kStringType);
+    email_value.SetString("test@test.com");
+    person.AddMember("email", email_value, allocator);
+    doc.AddMember("person", person, allocator);
+
+    doc.AddMember("data_size", 1, allocator);
+
+    rapidjson::StringBuffer buf;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buf);
+
+    doc.Accept(writer);
+
+    dst = buf.GetString();
+
+    return true;
+}
+```
+
+# openmp 
+
+
+# protobuf 
+
+## 数据类型 
+
+## 序列化/反序列化 
+
+## 编码规则
+
+## arean
+
+## json convert 
+
+## 反射 
+
+
+# thrift 
+
+## 数据类型 
+
+## 序列化/反序列化 
+
+## 编码规则
+
+
+# zstd 
+
+## 压缩
+
+## 解压 
+
+# snappy 
+
+## 压缩
+
+## 解压 
+
+# zlib 
+
+## 压缩
+
+## 解压 
+
+
+# tbb
+
+> https://www.cnblogs.com/KillerAery/p/16333348.html#cpu-bound-%E4%B8%8E-memory-bound 
+
+## 线程安全的容器 
+
+
+## 并行算法 
+
+- map
+- reduce
+- filter
+- scan
+
+## 并行循环
