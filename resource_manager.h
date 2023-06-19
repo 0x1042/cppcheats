@@ -37,5 +37,4 @@ folly::Future<int> async_get(const std::string & url, std::string & response);
 
 folly::Future<int> batch_get(const std::vector<std::string> & urls, std::vector<std::string> & resps);
 
-
 } // namespace infra

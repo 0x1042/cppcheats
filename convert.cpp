@@ -17,7 +17,6 @@ int convert(std::string_view str, int defval) {
 }
 } // namespace infra
 
-
 namespace tests {
 
 TEST(convertstr, convertstr) {

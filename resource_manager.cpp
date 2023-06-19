@@ -82,7 +82,6 @@ std::shared_ptr<folly::CPUThreadPoolExecutor> create(size_t thread_num, std::str
 }
 } // namespace infra
 
-
 namespace tests {
 
 TEST(testpool, createpool) {
@@ -92,7 +91,6 @@ TEST(testpool, createpool) {
     ASSERT_TRUE(pool1 != nullptr);
     ASSERT_TRUE(pool2 != nullptr);
 }
-
 
 TEST(asyncget, asyncget) {
     LOG(INFO) << "asyncget start";
@@ -104,7 +102,6 @@ TEST(asyncget, asyncget) {
 
     LOG(INFO) << "asyncget fetch status_code:" << status_code << " response size:" << resp.size();
 }
-
 
 TEST(batchget, batchget) {
     std::vector<std::string> urls = {
