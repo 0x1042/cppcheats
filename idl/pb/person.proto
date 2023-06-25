@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package tutorial;
+
+option  cc_enable_arenas = true;
+option cc_generic_services = true;
+
+
+enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+}
+
+message PhoneNumber {
+    string number = 1;
+    PhoneType pt = 2;
+}
+
+enum Gender {
+    UNKNOWN = 0;
+    MALE = 1;
+    FEMALE = 2;
+}
+
+enum Role {
+    CIVILIAN = 0;
+    SOLDIER = 1;
+}
+
+message Person {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+    uint32 age = 4;
+    repeated PhoneNumber numbers = 5;
+    Gender gender = 6;
+    Role role = 7;
+    map<string, string> extras = 100;
+}
