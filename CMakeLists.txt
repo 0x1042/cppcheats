@@ -20,12 +20,17 @@ find_package(fmt CONFIG REQUIRED)
 find_package(Protobuf CONFIG REQUIRED)
 find_package(tbb CONFIG REQUIRED)
 
+find_package(Poco REQUIRED COMPONENTS Encodings)
+
 add_executable(${PROJECT_NAME}
                main.cpp
                resource_manager.cpp resource_manager.h
                convert.cpp convert.h
                json.cpp json.h
-               parallel.cpp parallel.h tbb_usages.cc tbb_usages.h)
+               parallel.cpp parallel.h
+               person.pb.h person.pb.cc
+               tbb_usages.cc tbb_usages.h
+               prototest.cpp prototest.h)
 
 target_link_libraries(${PROJECT_NAME}
                       gflags::gflags
@@ -37,5 +42,8 @@ target_link_libraries(${PROJECT_NAME}
                       rapidjson
                       TBB::tbb
                       Folly::folly_deps
+                      protobuf::libprotoc
+                      protobuf::libprotobuf
+                      Poco::Encodings
                       /usr/local/lib/libomp.a
                       )
