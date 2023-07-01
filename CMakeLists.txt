@@ -19,6 +19,9 @@ find_package(RapidJSON CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 find_package(Protobuf CONFIG REQUIRED)
 find_package(tbb CONFIG REQUIRED)
+find_package(zstd CONFIG REQUIRED)
+find_package(ZLIB REQUIRED)
+find_package(Snappy CONFIG REQUIRED)
 
 find_package(Poco REQUIRED COMPONENTS Encodings)
 
@@ -30,20 +33,26 @@ add_executable(${PROJECT_NAME}
                parallel.cpp parallel.h
                person.pb.h person.pb.cc
                tbb_usages.cc tbb_usages.h
-               prototest.cpp prototest.h)
+               prototest.cpp prototest.h
+               constant.cpp constant.h
+               compressor.cpp compressor.h
+               cast.cpp cast.h structbinding.cpp structbinding.h)
 
 target_link_libraries(${PROJECT_NAME}
-                      gflags::gflags
-                      Folly::folly
-                      glog::glog
-                      GTest::gtest
-                      GTest::gtest_main
-                      cpr::cpr
-                      rapidjson
-                      TBB::tbb
-                      Folly::folly_deps
-                      protobuf::libprotoc
-                      protobuf::libprotobuf
-                      Poco::Encodings
+                      PRIVATE gflags::gflags
+                      PRIVATE Folly::folly
+                      PRIVATE glog::glog
+                      PRIVATE GTest::gtest
+                      PRIVATE GTest::gtest_main
+                      PRIVATE cpr::cpr
+                      PRIVATE rapidjson
+                      PRIVATE TBB::tbb
+                      PRIVATE Folly::folly_deps
+                      PRIVATE protobuf::libprotoc
+                      PRIVATE protobuf::libprotobuf
+                      PRIVATE Poco::Encodings
+                      PRIVATE zstd::libzstd_static
+                      PRIVATE ZLIB::ZLIB
+                      PRIVATE Snappy::snappy
                       /usr/local/lib/libomp.a
                       )

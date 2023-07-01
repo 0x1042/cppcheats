@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="301px" preserveAspectRatio="none" style="width:247px;height:301px;background:#FFFFFF;" version="1.1" viewBox="0 0 247 301" width="247px" zoomAndPan="magnify"><defs/><g><!--MD5=[ae336da5efe52b168083e063e86251c2]
+class Base--><g id="elem_Base"><rect codeLine="5" fill="#F1F1F1" height="130.4414" id="Base" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="145" x="51.5" y="7"/><ellipse cx="104.25" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M106.7231,29.1431 Q106.1421,29.4419 105.5029,29.5913 Q104.8638,29.7407 104.1582,29.7407 Q101.6514,29.7407 100.3315,28.0889 Q99.0117,26.437 99.0117,23.3159 Q99.0117,20.1865 100.3315,18.5347 Q101.6514,16.8828 104.1582,16.8828 Q104.8638,16.8828 105.5112,17.0322 Q106.1587,17.1816 106.7231,17.4805 L106.7231,20.2031 Q106.0923,19.6221 105.4988,19.3523 Q104.9053,19.0825 104.2744,19.0825 Q102.9297,19.0825 102.2449,20.1492 Q101.5601,21.2158 101.5601,23.3159 Q101.5601,25.4077 102.2449,26.4744 Q102.9297,27.541 104.2744,27.541 Q104.9053,27.541 105.4988,27.2712 Q106.0923,27.0015 106.7231,26.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="124.75" y="28.291">Base</text><line style="stroke:#181818;stroke-width:0.5;" x1="52.5" x2="195.5" y1="39" y2="39"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="59.5" y="49.7441"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="71.5" y="56.5352">field1</text><polygon fill="none" points="62.5,64.2324,66.5,68.2324,62.5,72.2324,58.5,68.2324" style="stroke:#B38D22;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="71.5" y="73.0234">field2</text><ellipse cx="62.5" cy="85.7207" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="71.5" y="89.5117">field3</text><line style="stroke:#181818;stroke-width:0.5;" x1="52.5" x2="195.5" y1="96.4648" y2="96.4648"/><polygon fill="#4177AF" points="62.5,106.209,58.5,112.209,66.5,112.209" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="119" x="71.5" y="114">virtual method1()</text><polygon fill="#4177AF" points="62.5,122.6973,58.5,128.6973,66.5,128.6973" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="71.5" y="130.4883">method2()</text></g><!--MD5=[075e384db5159f035b517ebf08064cdc]
+class Derive1--><g id="elem_Derive1"><rect codeLine="14" fill="#F1F1F1" height="97.4648" id="Derive1" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="98" x="9" y="197.45"/><ellipse cx="30.3" cy="213.45" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M32.7731,219.5931 Q32.1921,219.8919 31.5529,220.0413 Q30.9138,220.1907 30.2082,220.1907 Q27.7014,220.1907 26.3815,218.5389 Q25.0617,216.887 25.0617,213.7659 Q25.0617,210.6365 26.3815,208.9847 Q27.7014,207.3328 30.2082,207.3328 Q30.9138,207.3328 31.5612,207.4822 Q32.2087,207.6316 32.7731,207.9305 L32.7731,210.6531 Q32.1423,210.0721 31.5488,209.8023 Q30.9553,209.5325 30.3244,209.5325 Q28.9797,209.5325 28.2949,210.5992 Q27.6101,211.6658 27.6101,213.7659 Q27.6101,215.8577 28.2949,216.9244 Q28.9797,217.991 30.3244,217.991 Q30.9553,217.991 31.5488,217.7212 Q32.1423,217.4515 32.7731,216.8704 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="45.7" y="218.741">Derive1</text><line style="stroke:#181818;stroke-width:0.5;" x1="10" x2="106" y1="229.45" y2="229.45"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="17" y="240.1941"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="29" y="246.9852">field8</text><line style="stroke:#181818;stroke-width:0.5;" x1="10" x2="106" y1="253.9383" y2="253.9383"/><polygon fill="#4177AF" points="20,263.6824,16,269.6824,24,269.6824" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="29" y="271.4734">method4()</text><polygon fill="#4177AF" points="20,280.1707,16,286.1707,24,286.1707" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="29" y="287.9617">method5()</text></g><!--MD5=[77fb560346fa592a021f24b7bb3f6456]
+class Derive2--><g id="elem_Derive2"><rect codeLine="21" fill="#F1F1F1" height="97.4648" id="Derive2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="98" x="142" y="197.45"/><ellipse cx="163.3" cy="213.45" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M165.7731,219.5931 Q165.1921,219.8919 164.5529,220.0413 Q163.9138,220.1907 163.2082,220.1907 Q160.7014,220.1907 159.3815,218.5389 Q158.0617,216.887 158.0617,213.7659 Q158.0617,210.6365 159.3815,208.9847 Q160.7014,207.3328 163.2082,207.3328 Q163.9138,207.3328 164.5612,207.4822 Q165.2087,207.6316 165.7731,207.9305 L165.7731,210.6531 Q165.1423,210.0721 164.5488,209.8023 Q163.9553,209.5325 163.3244,209.5325 Q161.9797,209.5325 161.2949,210.5992 Q160.6101,211.6658 160.6101,213.7659 Q160.6101,215.8577 161.2949,216.9244 Q161.9797,217.991 163.3244,217.991 Q163.9553,217.991 164.5488,217.7212 Q165.1423,217.4515 165.7731,216.8704 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="178.7" y="218.741">Derive2</text><line style="stroke:#181818;stroke-width:0.5;" x1="143" x2="239" y1="229.45" y2="229.45"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="150" y="240.1941"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="162" y="246.9852">field9</text><line style="stroke:#181818;stroke-width:0.5;" x1="143" x2="239" y1="253.9383" y2="253.9383"/><polygon fill="#4177AF" points="153,263.6824,149,269.6824,157,269.6824" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="162" y="271.4734">method6()</text><polygon fill="#4177AF" points="153,280.1707,149,286.1707,157,286.1707" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="162" y="287.9617">method7()</text></g><!--MD5=[2979eeb540519982a2099c251cd04622]
+reverse link Base to Derive1--><g id="link_Base_Derive1"><path codeLine="2" d="M91.86,156.95 C86.59,170.68 81.3,184.48 76.51,196.96 " fill="none" id="Base-backto-Derive1" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="85.53,154.91,99.24,138.74,98.6,159.92,85.53,154.91" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[cd5defd2b7ff926a28078be78992cfd8]
+reverse link Base to Derive2--><g id="link_Base_Derive2"><path codeLine="3" d="M156.62,156.95 C161.97,170.68 167.35,184.48 172.21,196.96 " fill="none" id="Base-backto-Derive2" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="149.88,159.92,149.14,138.74,162.92,154.84,149.88,159.92" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1ef5e2bd5af9c8feac4a9bdd0ec9431f]
+@startuml dynamic_cast
+
+Base <|- - Derive1
+Base <|- - Derive2
+
+class Base {
+    - field1
+    # field2
+    + field3
+
+    ~virtual method1()
+    ~method2()
+}
+
+class Derive1 {
+    - field8
+
+    ~method4()
+    ~method5()
+}
+
+class Derive2 {
+    - field9
+
+    ~method6()
+    ~method7()
+}
+
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 01:01:30 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: CN
+--></g></svg>
