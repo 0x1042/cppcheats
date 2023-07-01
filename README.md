@@ -2,62 +2,72 @@
 
 > 工作中常用的库
 
-| 库                                                      | 使用到的功能        |
-| ------------------------------------------------------- | ------------------- |
-| [folly](https://github.com/facebook/folly)              | 线程池/异步任务封装 |
-| [rapidjson](https://github.com/Tencent/rapidjson)       | json解析/生成       |
-| [protobuf](https://github.com/protocolbuffers/protobuf) | protobuf读写        |
-| [zstd](https://github.com/facebook/zstd)                | 压缩                |
-| [snappy](https://github.com/google/snappy)              | 压缩                |
-| [zlib](https://github.com/madler/zlib)                  | 压缩                |
-| [fmt](https://github.com/fmtlib/fmt)                    | format              |
-| [cpr](https://github.com/libcpr/cpr)                    | http request        |
-| [thrift](https://github.com/apache/thrift)              | rpc协议             |
+| 库                                                       | 使用到的功能       |
+|---------------------------------------------------------|--------------|
+| [folly](https://github.com/facebook/folly)              | 线程池/异步任务封装   |
+| [rapidjson](https://github.com/Tencent/rapidjson)       | json解析/生成    |
+| [protobuf](https://github.com/protocolbuffers/protobuf) | protobuf读写   |
+| [zstd](https://github.com/facebook/zstd)                | 压缩           |
+| [snappy](https://github.com/google/snappy)              | 压缩           |
+| [zlib](https://github.com/madler/zlib)                  | 压缩           |
+| [fmt](https://github.com/fmtlib/fmt)                    | format       |
+| [cpr](https://github.com/libcpr/cpr)                    | http request |
+| [thrift](https://github.com/apache/thrift)              | rpc协议        |
 | [tbb](https://github.com/oneapi-src/oneTBB)             | 线程安全的容器      |
-| [openmp](https://www.openmp.org/)                       | 并行计算            |
-| [Log4cxx](https://github.com/apache/logging-log4cxx)    | 日志                |
-| [jemalloc](https://github.com/jemalloc/jemalloc)        | 内存分配            |
-| [cityhash](https://github.com/google/cityhash)          | hash                |
+| [openmp](https://www.openmp.org/)                       | 并行计算         |
+| [Log4cxx](https://github.com/apache/logging-log4cxx)    | 日志           |
+| [jemalloc](https://github.com/jemalloc/jemalloc)        | 内存分配         |
+| [cityhash](https://github.com/google/cityhash)          | hash         |
 
 - [cppcheats](#cppcheats)
 - [folly](#folly)
-  - [线程池](#线程池)
-  - [异步封装](#异步封装)
-  - [执行多个异步任务](#执行多个异步任务)
-  - [类型转换](#类型转换)
+    - [线程池](#线程池)
+    - [异步封装](#异步封装)
+    - [执行多个异步任务](#执行多个异步任务)
+    - [类型转换](#类型转换)
 - [rapidjson](#rapidjson)
-  - [parse json](#parse-json)
-  - [generate json](#generate-json)
+    - [parse json](#parse-json)
+    - [generate json](#generate-json)
 - [openmp](#openmp)
 - [protobuf](#protobuf)
-  - [数据类型](#数据类型)
-  - [序列化](#序列化)
-  - [反序列化](#反序列化)
-  - [`arean`](#arean)
-  - [json convert](#json-convert)
-  - [反射](#反射)
-  - [编码规则](#编码规则)
+    - [数据类型](#数据类型)
+    - [序列化](#序列化)
+    - [反序列化](#反序列化)
+    - [`arean`](#arean)
+    - [json convert](#json-convert)
+    - [反射](#反射)
+    - [编码规则](#编码规则)
 - [thrift](#thrift)
-  - [数据类型](#数据类型-1)
-  - [序列化/反序列化](#序列化反序列化)
-  - [编码规则](#编码规则-1)
-- [zstd](#zstd)
-  - [压缩](#压缩)
-  - [解压](#解压)
-- [snappy](#snappy)
-  - [压缩](#压缩-1)
-  - [解压](#解压-1)
-- [zlib](#zlib)
-  - [压缩](#压缩-2)
-  - [解压](#解压-2)
+    - [数据类型](#数据类型-1)
+    - [序列化/反序列化](#序列化反序列化)
+    - [编码规则](#编码规则-1)
+- [压缩与解压](#压缩与解压)
+    - [zstd](#zstd)
+        - [压缩](#压缩)
+        - [解压](#解压)
+    - [snappy](#snappy)
+        - [压缩](#压缩-1)
+        - [解压](#解压-1)
+    - [zlib](#zlib)
+        - [压缩](#压缩-2)
+        - [解压](#解压-2)
 - [tbb](#tbb)
-  - [线程安全的容器](#线程安全的容器)
-  - [并行算法](#并行算法)
-  - [并行循环](#并行循环)
+    - [线程安全的容器](#线程安全的容器)
+    - [并行算法](#并行算法)
+    - [并行循环](#并行循环)
+- [`static` 变量初始化](#static-变量初始化)
+    - [`before c17`](#before-c17)
+    - [`after c17`](#after-c17)
+- [`struct binding`](#struct-binding)
+- [`cast`](#cast)
+    - [`const_cast`](#const_cast)
+    - [`static_cast`](#static_cast)
+    - [`dynamic_cast`](#dynamic_cast)
+    - [`reinterpret_cast`](#reinterpret_cast)
 
-# folly 
+# folly
 
-## 线程池 
+## 线程池
 
 ```c++
 std::shared_ptr<folly::CPUThreadPoolExecutor> thread_pool() {
@@ -86,7 +96,7 @@ std::shared_ptr<folly::CPUThreadPoolExecutor> create(size_t thread_num, std::str
 }
 ```
 
-## 异步封装 
+## 异步封装
 
 ```c++
 int get(const std::string & url, std::string & response) {
@@ -143,7 +153,7 @@ ASSERT_EQ(hw, "helloworld");
 
 ```
 
-# rapidjson 
+# rapidjson
 
 ## parse json
 
@@ -212,15 +222,15 @@ bool generate_json(std::string & dst) {
 }
 ```
 
-# openmp 
+# openmp
 
-# protobuf 
+# protobuf
 
 ```shell
 vcpkg install protobuf
 ```
 
-## 数据类型 
+## 数据类型
 
 ```protobuf
 syntax = "proto3";
@@ -230,38 +240,28 @@ package tutorial;
 option cc_generic_services = true;
 
 
-enum PhoneType {
-    MOBILE = 0;
-    HOME = 1;
-    WORK = 2;
-}
+enum PhoneType {MOBILE = 0;
+	HOME = 1;
+	WORK = 2;}
 
-message PhoneNumber {
-    string number = 1;
-    PhoneType pt = 2;
-}
+message PhoneNumber {string number = 1;
+	PhoneType pt = 2;}
 
-enum Gender {
-    UNKNOWN = 0;
-    MALE = 1;
-    FEMALE = 2;
-}
+enum Gender {UNKNOWN = 0;
+	MALE = 1;
+	FEMALE = 2;}
 
-enum Role {
-    CIVILIAN = 0;
-    SOLDIER = 1;
-}
+enum Role {CIVILIAN = 0;
+	SOLDIER = 1;}
 
-message Person {
-    int32 id = 1;
-    string name = 2;
-    string email = 3;
-    uint32 age = 4;
-    repeated PhoneNumber numbers = 5;
-    Gender gender = 6;
-    Role role = 7;
-    map<string, string> extras = 100;
-}
+message Person {int32 id = 1;
+	string name = 2;
+	string email = 3;
+	uint32 age = 4;
+	repeated PhoneNumber numbers = 5;
+	Gender gender = 6;
+	Role role = 7;
+	map<string, string> extras = 100;}
 ```
 
 ## 序列化
@@ -322,7 +322,7 @@ TEST(prototest, messagetostring) {
 }
 ```
 
-## 反序列化 
+## 反序列化
 
 ```c++
 void string_to_message(const std::string & src, tutorial::Person & dst) {
@@ -397,7 +397,7 @@ TEST(prototest, createarean) {
 }
 ```
 
-## json convert 
+## json convert
 
 ```c++
 void message_to_json(const tutorial::Person & person, std::string & dst) {
@@ -423,45 +423,245 @@ void json_to_message(const std::string & src, tutorial::Person & dst) {
 }
 ```
 
-## 反射 
+## 反射
 
 ## 编码规则
 
 [编码规则](https://github.com/halfrost/Halfrost-Field/blob/master/contents/Protocol/Protocol-buffers-encode.md#%E5%85%AD-protocol-buffer-%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86)
 
-# thrift 
+# thrift
 
-## 数据类型 
+## 数据类型
 
-## 序列化/反序列化 
+## 序列化/反序列化
 
 ## 编码规则
 
-# zstd 
+# 压缩与解压
 
-## 压缩
+```c++
+enum class Type : uint32_t {
+    UNKNOWN = 0,
+    ZSTD = 1,
+    SNAPPY = 2,
+    DEFLATE = 3, // RFC 1951
+    ZLIB = 4, // RFC 1950
+    GZIP = 5, // RFC 1952  https://pkg.go.dev/compress/gzip
+};
 
-## 解压 
+constexpr int WB_DEFLATE = -MAX_WBITS;
+constexpr int WB_ZLIB = MAX_WBITS;
+constexpr int WB_GZIP = MAX_WBITS | 16;
 
-# snappy 
+constexpr int buf_size = 16 * 1024;
 
-## 压缩
+constexpr int DEFAULT_LEVEL = 5;
 
-## 解压 
+struct CompressOptions {
+    const Type type;
+    const int level; // ignore by snappy
 
-# zlib 
+    explicit CompressOptions(Type type, int level = DEFAULT_LEVEL);
+};
 
-## 压缩
+bool Compressor::compress(const std::string & src, std::string & dst, const CompressOptions & ops) {
+    switch (ops.type) {
+        case Type::ZSTD:
+            return zstd_compress(src, dst, ops.level);
+        case Type::SNAPPY:
+            return snappy_compress(src, dst);
+        case Type::DEFLATE:
+            return zlib_compress(src, dst, WB_DEFLATE, ops.level);
+        case Type::ZLIB:
+            return zlib_compress(src, dst, WB_ZLIB, ops.level);
+        case Type::GZIP:
+            return zlib_compress(src, dst, WB_GZIP, ops.level);
+        case Type::UNKNOWN:
+            break;
+    }
+    LOG(ERROR) << "unsupport compresss type." << static_cast<uint32_t>(ops.type);
+    return false;
+}
 
-## 解压 
+bool Compressor::decompress(const std::string & src, std::string & dst, const CompressOptions & ops) {
+    switch (ops.type) {
+        case Type::ZSTD:
+            return zstd_decompress(src, dst);
+        case Type::SNAPPY:
+            return snappy_decompress(src, dst);
+        case Type::DEFLATE:
+            return zlib_decompress(src, dst, WB_DEFLATE);
+        case Type::ZLIB:
+            return zlib_decompress(src, dst, WB_ZLIB);
+        case Type::GZIP:
+            return zlib_decompress(src, dst, WB_GZIP);
+        case Type::UNKNOWN:
+            break;
+    }
+
+    LOG(ERROR) << "unsupport decompress type." << static_cast<uint32_t>(ops.type);
+    return false;
+}
+```
+
+## zstd
+
+### 压缩
+
+```c++
+bool Compressor::zstd_compress(const std::string & src, std::string & dst, int level) {
+    size_t bsize = ZSTD_compressBound(src.size());
+    dst.resize(bsize);
+
+    auto * dstp = const_cast<void *>(static_cast<const void *>(dst.c_str()));
+    const auto * srcp = static_cast<const void *>(src.c_str());
+
+    size_t size = ZSTD_compress(dstp, bsize, srcp, src.size(), level);
+
+    if (auto code = ZSTD_isError(size); code) {
+        return false;
+    }
+    dst.resize(size);
+    return true;
+}
+```
+
+### 解压
+
+```c++
+bool Compressor::zstd_decompress(const std::string & src, std::string & dst) {
+    size_t bsize = ZSTD_getFrameContentSize(src.c_str(), src.size());
+
+    if (0 == bsize) {
+        return bsize;
+    }
+
+    if (ZSTD_CONTENTSIZE_ERROR == bsize) {
+        return false;
+    }
+
+    dst.resize(bsize);
+    auto * dstp = const_cast<void *>(static_cast<const void *>(dst.c_str()));
+    const auto * srcp = static_cast<const void *>(src.c_str());
+    size_t const size = ZSTD_decompress(dstp, bsize, srcp, src.size());
+    if (auto code = ZSTD_isError(size); code) {
+        return false;
+    }
+    dst.resize(size);
+    return true;
+}
+```
+
+## snappy
+
+### 压缩
+
+```c++
+bool Compressor::snappy_compress(const std::string & src, std::string & dst) {
+    size_t size = snappy::Compress(src.data(), src.size(), &dst);
+    return size > 0;
+}
+```
+
+### 解压
+
+```c++
+bool Compressor::snappy_decompress(const std::string & src, std::string & dst) {
+    return snappy::Uncompress(src.data(), src.size(), &dst);
+}
+```
+
+## zlib
+
+### 压缩
+
+```c++
+bool Compressor::zlib_compress(const std::string & src, std::string & dst, int wb, int level) {
+    z_stream zs;
+    memset(&zs, 0, sizeof(zs));
+
+    if (int status = deflateInit2(&zs, level, Z_DEFLATED, wb, MAX_MEM_LEVEL, Z_DEFAULT_STRATEGY); status != Z_OK) {
+        LOG(ERROR) << "deflateInit failed. status:" << status;
+        return false;
+    }
+
+    zs.next_in = (Bytef *)src.data();
+    zs.avail_in = src.size(); // set the z_stream's input
+
+    int ret;
+    char outbuffer[buf_size];
+    std::string outstring;
+
+    // retrieve the compressed bytes blockwise
+    do {
+        zs.next_out = reinterpret_cast<Bytef *>(outbuffer);
+        zs.avail_out = sizeof(outbuffer);
+
+        ret = deflate(&zs, Z_FINISH);
+
+        if (dst.size() < zs.total_out) {
+            dst.append(outbuffer, zs.total_out - outstring.size());
+        }
+    } while (ret == Z_OK);
+
+    deflateEnd(&zs);
+
+    if (ret != Z_STREAM_END) {
+        LOG(ERROR) << "compress fail. code:" << ret << " error:" << zs.msg;
+        return false;
+    }
+
+    return true;
+}
+```
+
+### 解压
+
+```c++
+bool Compressor::zlib_decompress(const std::string & src, std::string & dst, int wb) {
+    z_stream zs;
+    memset(&zs, 0, sizeof(zs));
+
+    if (int status = inflateInit2(&zs, wb); status != Z_OK) {
+        LOG(ERROR) << "inflateInit failed.status:" << status;
+        return false;
+    }
+
+    zs.next_in = (Bytef *)src.data();
+    zs.avail_in = src.size();
+
+    int ret;
+    char outbuffer[buf_size];
+
+    do {
+        zs.next_out = reinterpret_cast<Bytef *>(outbuffer);
+        zs.avail_out = sizeof(outbuffer);
+
+        ret = inflate(&zs, 0);
+
+        if (dst.size() < zs.total_out) {
+            dst.append(outbuffer, zs.total_out - dst.size());
+        }
+    } while (ret == Z_OK);
+
+    inflateEnd(&zs);
+
+    if (ret != Z_STREAM_END) {
+        LOG(ERROR) << "compress fail. code:" << ret << " error:" << zs.msg;
+        return false;
+    }
+
+    return true;
+}
+```
 
 # tbb
 
-> https://www.cnblogs.com/KillerAery/p/16333348.html#cpu-bound-%E4%B8%8E-memory-bound 
+> https://www.cnblogs.com/KillerAery/p/16333348.html#cpu-bound-%E4%B8%8E-memory-bound
 
-## 线程安全的容器 
+## 线程安全的容器
 
-## 并行算法 
+## 并行算法
 
 - map
 - reduce
@@ -469,3 +669,192 @@ void json_to_message(const std::string & src, tutorial::Person & dst) {
 - scan
 
 ## 并行循环
+
+# `static` 变量初始化
+
+## `before c17`
+
+```c++
+
+// constant.h
+class Constant {
+public:
+    static std::unordered_map<std::string, std::vector<std::string>> config1;
+};
+
+// constant.cpp
+
+std::unordered_map<std::string, std::vector<std::string>> Constant::config1 = {
+    {"3", {"1", "2", "3"}},
+    {"4", {"4", "5", "6"}},
+};
+
+```
+
+## `after c17`
+
+```c++
+class Constant {
+public:
+    static inline std::unordered_map<std::string, std::vector<std::string>> config2 = {
+        {"1", {"1", "2", "3"}},
+        {"2", {"4", "5", "6"}},
+    };
+};
+
+```
+
+# `struct binding`
+
+```c++
+struct Config {
+    std::string v1;
+    double v2;
+};
+
+TEST(testbinding, binding1) {
+    double arr[3] = {1.0, 2.0, 3.0};
+    auto [a, b, c] = arr;
+    LOG(INFO) << "a " << a << " b " << b << " c " << c;
+
+    std::array<std::string, 3> str_arr = {"ab", "cd", "ef"};
+    auto [s1, s2, s3] = str_arr;
+    LOG(INFO) << "s1 " << s1 << " s2 " << s2 << " s3 " << s3;
+}
+
+TEST(testbinding, binding2) {
+    Config c{"world", 10.24};
+    auto & [v1, v2] = c;
+    LOG(INFO) << "v1 " << v1 << " v2 " << v2;
+}
+
+TEST(testbinding, binding3) {
+    std::tuple<int, double, std::string> tp = std::make_tuple(1, 3.14, "hello world");
+
+    // before c17
+    int idx;
+    double val;
+    std::string str;
+    std::tie(idx, val, str) = tp;
+    LOG(INFO) << "idx " << idx << " val " << val << " str " << str;
+
+    // after c17
+    auto [v1, v2, v3] = tp;
+    LOG(INFO) << "v1 " << v1 << " v2 " << v2 << " v3 " << v3;
+}
+
+TEST(testbinding, binding4) {
+    std::pair<std::string, int64_t> p = std::make_pair("hello", 5);
+    auto [k1, k2] = p;
+    LOG(INFO) << "k1 " << k1 << " k2 " << k2;
+}
+```
+
+# `cast`
+
+| 类型                         | 说明                                             |
+|----------------------------|------------------------------------------------|
+| `const_cast`               | 用于去除或者增加变量的const属性                             |
+| `static_cast`              | 静态地检查类型强制转换(编译期)                               |
+| `dynamic_cast`             | 动态地检查类型强制转换(运行时)                               |
+| `reinterpret_cast`         | 通过对底层字节数据进行重新解释来无条件的强制转换                       |
+| `const_pointer_cast`       | `const_cast`的`std::shared_ptr`版本               |
+| `static_pointer_cast`      | `static_pointer_cast`的`std::shared_ptr`版本      |
+| `dynamic_pointer_cast`     | `dynamic_pointer_cast`的`std::shared_ptr`版本     |
+| `reinterpret_pointer_cast` | `reinterpret_pointer_cast`的`std::shared_ptr`版本 |
+
+## `const_cast`
+
+> 给变量**增加**或者**移除** `const、volatile和__unaligned`属性
+
+```c++
+TEST(testcast, testconstcast) {
+    const std::string str = "hello world";
+
+    const char * c_str = str.c_str(); // c_str 是cost object
+
+    char * no_const_str = const_cast<char *>(c_str);
+
+    LOG(INFO) << "no_const_str:" << no_const_str;
+}
+```
+
+## `static_cast`
+
+> 没有运行时类型检查来保证安全性，**强制类型转换**所以安全期间，一般用于基本类型(int/double)等类型转换
+
+- 用于类层次结构中基类（父类）和派生类（子类）之间指针或引用的转换
+    - `upcast`（把派生类的指针或引用转换成基类表示）是安全的
+    - `downcast`（把基类指针或引用转换成派生类表示）时，由于没有动态类型检查，所以是不安全的
+- 用于基本数据类型之间的转换，如把int转换成char，把int转换成enum
+- 把空指针转换成目标类型的空指针
+- 把任何类型的表达式转换成void类型
+- 无运行时转换开销
+- 不能转换掉expression的const、volatile、或者__unaligned属性
+
+```c++
+TEST(testcast, teststaticcast) {
+    int num = 1024;
+    double num_d = static_cast<double>(num);
+    LOG(INFO) << "num_d:" << num_d;
+
+    // upcast
+    Derived2 * d_ptr = new Derived2{};
+    Base * b_ptr = static_cast<Base *>(d_ptr);
+    LOG(INFO) << "b_ptr:" << b_ptr;
+
+    // 失败
+    //    Base * base_ptr = new Base{};
+    //    Derived2 * d2_ptr = static_cast<Derived2 *>(base_ptr);
+    //    LOG(INFO) << "d2_ptr:" << d2_ptr;
+}
+```
+
+## `dynamic_cast`
+
+> 用于多态场景中的类型转换.
+
+![](uml/dynamic_cast.svg)
+
+- `upcast` 向上转换 `Derive1 -> Base` 成功且安全的
+- `downcast` 向下转换  `Base -> Derive2` 可能失败
+- `sideways` 同级别转换  `Derive1 -> Derive2` 要求有公共基类
+
+```c++
+
+// type-id 只能是类的指针、类的引用或者void *
+// dynamic_cast <type-id> (expression) 
+TEST(testcast, testdynamiccast) {
+    Base b;
+    Base * b_ptr;
+    Derived d;
+    Derived * d_ptr;
+    b_ptr = dynamic_cast<Base *>(&d);
+    b_ptr->run(); // 调用的是子类的方法
+
+    // will fail
+    d_ptr = dynamic_cast<Derived *>(&b);
+    //    d_ptr->run();
+}
+```
+
+## `reinterpret_cast`
+
+> reinterpret_cast可以将任何指针类型转换为任何其他指针类型，甚至是不相关的类。 操作结果是从一个指针到另一个指针的值的简单二进制副本。
+> 允许所有指针转换：既不检查指向的内容，也不检查指针类型本身。
+
+```c++
+TEST(testcast, testreinterpretcast) {
+    Base * b_ptr1 = new Base();
+    Derived1 * d1_ptr = new Derived1();
+    Derived2 * d2_ptr = new Derived2();
+    Base * b_ptr2 = new Base();
+
+    d1_ptr = reinterpret_cast<Derived1 *>(b_ptr1);
+    b_ptr2 = reinterpret_cast<Base *>(d2_ptr);
+
+    LOG(INFO) << "d1_ptr:" << d1_ptr;
+    LOG(INFO) << "d2_ptr:" << d2_ptr;
+
+}
+```

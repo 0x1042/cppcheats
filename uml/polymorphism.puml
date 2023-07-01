@@ -1,0 +1,29 @@
+@startuml dynamiccast
+
+Base <|-- Derive1
+Base <|-- Derive2
+
+class Base {
+    - field1
+    # field2
+    + field3
+
+    ~virtual method1()
+    ~method2()
+}
+
+class Derive1 {
+    - field8
+
+    ~method4()
+    ~method5()
+}
+
+class Derive2 {
+    - field9
+
+    ~method6()
+    ~method7()
+}
+
+@enduml
