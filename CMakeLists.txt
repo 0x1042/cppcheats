@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-
 set(Boost_NO_WARN_NEW_VERSIONS ON)
 set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_STATIC_RUNTIME ON)
@@ -22,6 +21,7 @@ find_package(tbb CONFIG REQUIRED)
 find_package(zstd CONFIG REQUIRED)
 find_package(ZLIB REQUIRED)
 find_package(Snappy CONFIG REQUIRED)
+find_package(asio CONFIG REQUIRED)
 
 find_package(Poco REQUIRED COMPONENTS Encodings)
 
@@ -36,7 +36,10 @@ add_executable(${PROJECT_NAME}
                prototest.cpp prototest.h
                constant.cpp constant.h
                compressor.cpp compressor.h
-               cast.cpp cast.h structbinding.cpp structbinding.h)
+               cast.cpp cast.h structbinding.cpp
+               structbinding.h proxy.cpp proxy.h
+               sockets.cpp sockets.h
+               traits.cpp traits.h)
 
 target_link_libraries(${PROJECT_NAME}
                       PRIVATE gflags::gflags
@@ -54,5 +57,6 @@ target_link_libraries(${PROJECT_NAME}
                       PRIVATE zstd::libzstd_static
                       PRIVATE ZLIB::ZLIB
                       PRIVATE Snappy::snappy
-                      /usr/local/lib/libomp.a
-                      )
+                      /usr/local/opt/llvm/lib/libomp.dylib
+                      PRIVATE asio::asio
+)
