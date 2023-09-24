@@ -4,6 +4,7 @@
 
 #include "compressor.h"
 
+#include <array>
 #include <string>
 
 #include <snappy.h>
@@ -18,7 +19,7 @@ namespace infra {
 CompressOptions::CompressOptions(Type type, int level) : type(type), level(level) {
 }
 
-bool Compressor::compress(const std::string & src, std::string & dst, const CompressOptions & ops) {
+auto Compressor::compress(const std::string & src, std::string & dst, const CompressOptions & ops) -> bool {
     switch (ops.type) {
         case Type::ZSTD:
             return zstd_compress(src, dst, ops.level);
@@ -37,7 +38,7 @@ bool Compressor::compress(const std::string & src, std::string & dst, const Comp
     return false;
 }
 
-bool Compressor::decompress(const std::string & src, std::string & dst, const CompressOptions & ops) {
+auto Compressor::decompress(const std::string & src, std::string & dst, const CompressOptions & ops) -> bool {
     switch (ops.type) {
         case Type::ZSTD:
             return zstd_decompress(src, dst);
@@ -57,7 +58,7 @@ bool Compressor::decompress(const std::string & src, std::string & dst, const Co
     return false;
 }
 
-bool Compressor::zstd_compress(const std::string & src, std::string & dst, int level) {
+auto Compressor::zstd_compress(const std::string & src, std::string & dst, int level) -> bool {
     size_t bsize = ZSTD_compressBound(src.size());
     dst.resize(bsize);
 
@@ -73,7 +74,7 @@ bool Compressor::zstd_compress(const std::string & src, std::string & dst, int l
     return true;
 }
 
-bool Compressor::zstd_decompress(const std::string & src, std::string & dst) {
+auto Compressor::zstd_decompress(const std::string & src, std::string & dst) -> bool {
     size_t bsize = ZSTD_getFrameContentSize(src.c_str(), src.size());
 
     if (0 == bsize) {
@@ -95,16 +96,16 @@ bool Compressor::zstd_decompress(const std::string & src, std::string & dst) {
     return true;
 }
 
-bool Compressor::snappy_compress(const std::string & src, std::string & dst) {
+auto Compressor::snappy_compress(const std::string & src, std::string & dst) -> bool {
     size_t size = snappy::Compress(src.data(), src.size(), &dst);
     return size > 0;
 }
 
-bool Compressor::snappy_decompress(const std::string & src, std::string & dst) {
+auto Compressor::snappy_decompress(const std::string & src, std::string & dst) -> bool {
     return snappy::Uncompress(src.data(), src.size(), &dst);
 }
 
-bool Compressor::zlib_compress(const std::string & src, std::string & dst, int wb, int level) {
+auto Compressor::zlib_compress(const std::string & src, std::string & dst, int wb, int level) -> bool {
     z_stream zs;
     memset(&zs, 0, sizeof(zs));
 
@@ -142,7 +143,7 @@ bool Compressor::zlib_compress(const std::string & src, std::string & dst, int w
     return true;
 }
 
-bool Compressor::zlib_decompress(const std::string & src, std::string & dst, int wb) {
+auto Compressor::zlib_decompress(const std::string & src, std::string & dst, int wb) -> bool {
     z_stream zs;
     memset(&zs, 0, sizeof(zs));
 
@@ -156,6 +157,8 @@ bool Compressor::zlib_decompress(const std::string & src, std::string & dst, int
 
     int ret;
     char outbuffer[buf_size];
+
+    // std::array<char, buf_size> outbuffer;
 
     do {
         zs.next_out = reinterpret_cast<Bytef *>(outbuffer);

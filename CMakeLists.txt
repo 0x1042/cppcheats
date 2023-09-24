@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.27)
 project(cppcheats)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -26,17 +26,30 @@ find_package(Snappy CONFIG REQUIRED)
 find_package(Poco REQUIRED COMPONENTS Encodings)
 
 add_executable(${PROJECT_NAME}
-               main.cpp
-               resource_manager.cpp resource_manager.h
-               convert.cpp convert.h
-               json.cpp json.h
-               parallel.cpp parallel.h
-               person.pb.h person.pb.cc
-               tbb_usages.cc tbb_usages.h
-               prototest.cpp prototest.h
-               constant.cpp constant.h
-               compressor.cpp compressor.h
-               cast.cpp cast.h structbinding.cpp structbinding.h)
+            main.cpp
+            infra/cast.cpp 
+            infra/cast.h 
+            infra/compressor.cpp 
+            infra/compressor.h 
+            infra/constant.cpp 
+            infra/constant.h 
+            infra/convert.cpp 
+            infra/convert.h 
+            infra/json.cpp infra/json.h 
+            infra/parallel.cpp 
+            infra/parallel.h 
+            infra/resource_manager.cpp 
+            infra/resource_manager.h 
+            infra/structbinding.cpp 
+            infra/structbinding.h 
+            infra/tbb_usages.cc 
+            infra/tbb_usages.h
+            proto/person.pb.cc 
+            proto/person.pb.h 
+            proto/prototest.cpp 
+            proto/prototest.h
+            meta/v1.h
+)
 
 target_link_libraries(${PROJECT_NAME}
                       PRIVATE gflags::gflags
@@ -54,5 +67,5 @@ target_link_libraries(${PROJECT_NAME}
                       PRIVATE zstd::libzstd_static
                       PRIVATE ZLIB::ZLIB
                       PRIVATE Snappy::snappy
-                      /usr/local/lib/libomp.a
+                      /usr/local/opt/libomp/lib/libomp.a
                       )

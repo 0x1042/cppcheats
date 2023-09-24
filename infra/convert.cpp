@@ -12,7 +12,7 @@
 
 namespace infra {
 
-int convert(std::string_view str, int defval) {
+auto convert(std::string_view str, int defval) -> int {
     return folly::tryTo<int>(str).value_or(defval);
 }
 } // namespace infra

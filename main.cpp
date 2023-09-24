@@ -4,13 +4,13 @@
 #include <glog/logging.h>
 #include <gtest/gtest.h>
 
-int main(int argc, char ** argv) {
+auto main(int argc, char ** argv) -> int {
     google::ParseCommandLineFlags(&argc, &argv, true);
     google::InitGoogleLogging(argv[0]);
     testing::InitGoogleTest(&argc, argv);
     FLAGS_stderrthreshold = google::GLOG_INFO;
 
-    auto _guard = folly::makeGuard([]() {
+    auto guard = folly::makeGuard([]() {
         LOG(WARNING) << "shutdown...";
         google::ShutdownGoogleLogging();
     });
