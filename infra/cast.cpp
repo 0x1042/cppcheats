@@ -4,6 +4,7 @@
 
 #include "cast.h"
 
+#include <unordered_map>
 #include <glog/logging.h>
 #include <gtest/gtest.h>
 

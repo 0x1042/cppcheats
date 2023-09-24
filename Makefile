@@ -9,7 +9,7 @@ CXX_ASAN_FLAG=-DCMAKE_CXX_FLAGS="-fno-omit-frame-pointer -fsanitize=address -fsa
 C_ASAN_FLAG=-DCMAKE_C_FLAGS="-fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined -fsanitize=leak -g"
 LINK_ASAN_FLAG=-DCMAKE_EXE_LINKER_FLAGS="-fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined -fsanitize=leak"
 PROTOC=${VCPKG_ROOT}/installed/x64-osx/tools/protobuf/protoc
-PROTO_DST=.
+PROTO_DST=proto
 IDLPATH="idl/pb/"
 
 ARGS=-G ${Generates} -S . ${TOOL_FILE} ${C_ASAN_FLAG} ${CXX_ASAN_FLAG} ${LINK_ASAN_FLAG}

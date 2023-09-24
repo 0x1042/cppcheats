@@ -4,10 +4,9 @@
 
 #pragma once
 
-#include <string>
 #include <string_view>
 namespace infra {
 
-int convert(std::string_view str, int defval = 0);
+auto convert(std::string_view str, int defval = 0) -> int;
 
 } // namespace infra

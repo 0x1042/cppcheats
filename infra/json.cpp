@@ -4,10 +4,6 @@
 
 #include "json.h"
 
-#include <string>
-#include <unordered_map>
-#include <utility>
-
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 #include <glog/logging.h>
@@ -19,7 +15,7 @@
 
 namespace infra {
 
-bool json_to_map(const std::string & src, std::unordered_map<std::string, std::string> & dst) {
+auto json_to_map(const std::string & src, std::unordered_map<std::string, std::string> & dst) -> bool {
     rapidjson::Document doc;
     doc.Parse(src.c_str());
 
@@ -40,7 +36,7 @@ bool json_to_map(const std::string & src, std::unordered_map<std::string, std::s
     return !dst.empty();
 }
 
-bool generate_json(std::string & dst) {
+auto generate_json(std::string & dst) -> bool {
     rapidjson::Document doc;
     doc.SetObject();
 
@@ -91,11 +87,11 @@ TEST(jsonparse, jsonparse) {
                       "    \"silver\":\"tin\"\n"
                       "}";
 
-    std::unordered_map<std::string, std::string> db;
+    std::unordered_map<std::string, std::string> mock_db;
 
-    infra::json_to_map(str, db);
+    infra::json_to_map(str, mock_db);
 
-    LOG(INFO) << fmt::to_string(db);
+    LOG(INFO) << fmt::to_string(mock_db);
 }
 
 TEST(generatejson, generatejson) {
